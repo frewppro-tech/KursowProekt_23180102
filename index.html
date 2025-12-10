@@ -1,0 +1,147 @@
+    <!DOCTYPE html>
+    <html lang="bg">
+    <head>
+        <meta charset="UTF-8">
+        <title>Музикален плейър</title>
+
+        <link rel="stylesheet" href="css/style.css">
+        <script defer src="js/app.js"></script>
+    </head>
+    <body>
+    <header>
+        <h1>Музикален плейър</h1>
+        <p>Избери изпълнител и пусни любимата си песен.</p>
+    </header>
+
+    <nav aria-label="Избор на изпълнител">
+        <ul>
+            <li><button class="artist-tab active" data-artist="virgo">Virgo</button></li>
+            <li><button class="artist-tab" data-artist="galena">Galena</button></li>
+            <li><button class="artist-tab" data-artist="mbt">MBT</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Плейър -->
+        <section id="player-section" aria-label="Музикален плейър">
+            <article class="player">
+                <figure class="artist-visual">
+                    <!-- по подразбиране – Virgo -->
+                    <img id="artist-image" src="images/virgo.jpg" alt="Virgo">
+                    <figcaption id="artist-name">Virgo</figcaption>
+                </figure>
+
+                <div class="now-playing">
+                    <h2>Текуща песен</h2>
+                    <p id="current-track-title">Няма избрана песен</p>
+                </div>
+
+                <div class="controls" aria-label="Контроли за възпроизвеждане">
+                    <button id="prev-btn" type="button" aria-label="Предишна песен">⏮</button>
+                    <button id="play-pause-btn" type="button" aria-label="Пусни / Пауза">▶</button>
+                    <button id="next-btn" type="button" aria-label="Следваща песен">⏭</button>
+                </div>
+
+                <div class="progress" aria-label="Прогрес на песента">
+                    <span id="current-time">0:00</span>
+                    <input id="progress-bar" type="range" min="0" max="100" value="0">
+                    <span id="duration">0:00</span>
+                </div>
+
+                <div class="volume-control" aria-label="Сила на звука">
+                    <button id="mute-btn" type="button" aria-label="Заглуши / Върни звука">🔊</button>
+                    <input id="volume-slider" type="range" min="0" max="100" value="100">
+                </div>
+
+                <audio id="audio" preload="metadata"></audio>
+            </article>
+        </section>
+
+        <!-- Плейлисти -->
+        <aside id="playlists" aria-label="Плейлисти">
+            <!-- VIRGO -->
+            <section id="playlist-virgo" class="playlist playlist-active" aria-label="Плейлист на Virgo">
+                <h2>Virgo – плейлист</h2>
+                <ol>
+                    <li class="track" data-artist="virgo"
+                        data-src="audio/virgo-tvoqta-lubov.mp3"
+                        data-title="Virgo, Lidia – Tvoqta Lubov">
+                        Virgo, Lidia – Tvoqta Lubov
+                    </li>
+                    <li class="track" data-artist="virgo"
+                        data-src="audio/virgo-onlyfans.mp3"
+                        data-title="Virgo – OnlyFans">
+                        Virgo – OnlyFans
+                    </li>
+                    <li class="track" data-artist="virgo"
+                        data-src="audio/virgo-porsche.mp3"
+                        data-title="Virgo, Emil TRF, MBT – Porsche">
+                        Virgo, Emil TRF, MBT – Porsche
+                    </li>
+                    <li class="track" data-artist="virgo"
+                        data-src="audio/virgo-molitva.mp3"
+                        data-title="Virgo, Fyre – Molitva">
+                        Virgo, Fyre – Molitva
+                    </li>
+                </ol>
+            </section>
+
+            <!-- GALENA -->
+            <section id="playlist-galena" class="playlist" aria-label="Плейлист на Galena">
+                <h2>Galena – плейлист</h2>
+                <ol>
+                    <li class="track" data-artist="galena"
+                        data-src="audio/galena-22-22.mp3"
+                        data-title="Galena – 22 22">
+                        Galena – 22 22
+                    </li>
+                    <li class="track" data-artist="galena"
+                        data-src="audio/galena-delta-force.mp3"
+                        data-title="Galena x Tzanca Uraganu – Delta Force">
+                        Galena x Tzanca Uraganu – Delta Force
+                    </li>
+                    <li class="track" data-artist="galena"
+                        data-src="audio/galena-vse-po-jivota.mp3"
+                        data-title="Galena x Tsvetelina Yaneva – Vse po jivota">
+                        Galena x Tsvetelina Yaneva – Vse po jivota
+                    </li>
+                    <li class="track" data-artist="galena"
+                        data-src="audio/galena-po-po-po.mp3"
+                        data-title="Galena x Azis – Po, Po, Po">
+                        Galena x Azis – Po, Po, Po
+                    </li>
+                </ol>
+            </section>
+
+            <!-- MBT -->
+            <section id="playlist-mbt" class="playlist" aria-label="Плейлист на MBT">
+                <h2>MBT – плейлист</h2>
+                <ol>
+                    <li class="track" data-artist="mbt"
+                        data-src="audio/mbt-milkyway.mp3"
+                        data-title="MBT – Milkyway">
+                        MBT – Milkyway
+                    </li>
+                    <li class="track" data-artist="mbt"
+                        data-src="audio/mbt-only-fans.mp3"
+                        data-title="MBT – Only F NS">
+                        MBT – Only F NS
+                    </li>
+                    <li class="track" data-artist="mbt"
+                        data-src="audio/mbt-pandora.mp3"
+                        data-title="MBT – Pandora">
+                        MBT – Pandora
+                    </li>
+                    <li class="track" data-artist="mbt"
+                        data-src="audio/mbt-tishinata-im.mp3"
+                        data-title="MBT – Tishinata Im">
+                        MBT – Tishinata Im
+                    </li>
+                </ol>
+            </section>
+        </aside>
+    </main>
+
+    <footer></footer>
+    </body>
+    </html>
